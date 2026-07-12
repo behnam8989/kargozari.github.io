@@ -18,7 +18,7 @@ fetch("news.json")
 
                 <p>${item.preview}</p>
 
-                <a class="btn" href="${item.link}" target="_blank">
+                <a class="btn" href="news.html?id=${item.id}">
                     ادامه مطلب
                 </a>
 
