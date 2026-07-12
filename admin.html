@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>پنل مدیریت</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+    background:#eef3f9;
+}
+
+.admin{
+    max-width:800px;
+    margin:40px auto;
+    background:#fff;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
+
+input,
+textarea{
+    width:100%;
+    margin:10px 0;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #ddd;
+    font-size:16px;
+}
+
+textarea{
+    min-height:150px;
+}
+
+button{
+    background:#004aad;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+button:hover{
+    background:#003080;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="admin">
+
+<h2>پنل مدیریت اخبار</h2>
+
+<input id="password" type="password" placeholder="رمز ورود">
+
+<button onclick="login()">
+ورود
+</button>
+
+<div id="panel" style="display:none;">
+
+<hr>
+
+<input id="title" placeholder="عنوان خبر">
+
+<input id="date" placeholder="تاریخ">
+
+<input id="image" placeholder="لینک عکس">
+
+<textarea id="preview" placeholder="متن کوتاه"></textarea>
+
+<textarea id="content" placeholder="متن کامل خبر"></textarea>
+
+<button onclick="addNews()">
+
+افزودن خبر
+
+</button>
+
+<button onclick="downloadJson()">
+
+دانلود news.json
+
+</button>
+
+</div>
+
+</div>
+
+<script src="admin.js"></script>
+
+</body>
+
+</html>
