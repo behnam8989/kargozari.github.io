@@ -1,85 +1,52 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>خبر</title>
 
 <link rel="stylesheet" href="style.css">
-
-<style>
-.news-page{
-    max-width:900px;
-    margin:40px auto;
-    background:#fff;
-    padding:30px;
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-}
-
-.news-page img{
-    width:100%;
-    border-radius:15px;
-    margin:20px 0;
-}
-
-.date{
-    color:#777;
-    margin-bottom:15px;
-}
-
-.back{
-    display:inline-block;
-    margin-top:30px;
-    background:#004aad;
-    color:#fff;
-    text-decoration:none;
-    padding:10px 20px;
-    border-radius:10px;
-}
-</style>
 
 </head>
 
 <body>
 
-<div class="news-page">
-
-<h1 id="title"></h1>
-
-<div class="date" id="date"></div>
-
-<img id="image">
-
-<p id="content"></p>
-
-<a class="back" href="index.html">⬅ بازگشت به صفحه اصلی</a>
-
-</div>
+<div id="article"></div>
 
 <script>
 
-const params = new URLSearchParams(window.location.search);
-const id = params.get("id");
-
 fetch("news.json")
-.then(r=>r.json())
+.then(res=>res.json())
 .then(news=>{
 
-const item=news.find(n=>n.id==id);
+let id = new URLSearchParams(location.search).get("id");
+
+let item = news.find(n=>n.id == id);
 
 if(!item){
 
-document.body.innerHTML="<h2 style='text-align:center'>خبر پیدا نشد.</h2>";
+document.getElementById("article").innerHTML=
+"<h2>خبر پیدا نشد</h2>";
 
 return;
 
 }
 
-document.getElementById("title").innerText=item.title;
-document.getElementById("date").innerText=item.date;
-document.getElementById("image").src=item.image;
-document.getElementById("content").innerText=item.content;
+document.getElementById("article").innerHTML=`
+
+<div class="card">
+
+<img src="${item.image}" class="news-image">
+
+<h1>${item.title}</h1>
+
+<p>${item.date}</p>
+
+<p>${item.content}</p>
+
+</div>
+
+`;
 
 });
 
